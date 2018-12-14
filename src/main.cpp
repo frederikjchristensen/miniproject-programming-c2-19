@@ -92,7 +92,7 @@ int main(int argc, char *argv[]) {
 //########################### Manual control on, code #######################################
     if (manual == 1){
       //Calls the drive function with the linear to be up an down on left thumbstick. And left and right for the second input.
-      drive(thumb[1], thumb[0]); //Must be placed outside newMessage so that the robot will keep running at whatever speed the thumb is held at.
+      drive(thumb[1]/5, thumb[0]); //Must be placed outside newMessage so that the robot will keep running at whatever speed the thumb is held at.
     }
 //#############################################################################################
     ros::spinOnce();
@@ -105,7 +105,7 @@ int main(int argc, char *argv[]) {
 void drive(float lin, float ang){
   geometry_msgs::Twist vel_msg;
   //Our linear speed control looks
-  vel_msg.linear.x = (lin*vel_mult)/5;
+  vel_msg.linear.x = lin*vel_mult;
   vel_msg.angular.z = ang*vel_mult;
   //Publishes the geometry to the turtle_pub
   turtle_pub.publish(vel_msg);
