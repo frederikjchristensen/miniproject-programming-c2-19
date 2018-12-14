@@ -31,7 +31,8 @@ int main(int argc, char *argv[]) {
   //Manual is gonna be a condition we use to switch manual control on and off.
   int manual = 0;
 
-  // The while loop runs at maximum rate while ros is ok. Whatever rate your PC can handle.
+  // The while loop runs at 25HZ
+  ros::Rate r(25);
   while (ros::ok()){
   //######################################MANUAL SWITCH##############################
     if(newMessage == true){
@@ -86,7 +87,7 @@ int main(int argc, char *argv[]) {
     }
 //######################### END OF NEWMESSAGE BLOCK ###################################
 
-// PATATO LIVES HERE
+// PATATO LIVES HERE # Press alt + F4 for free burritos.
 
 //########################### Manual control on, code #######################################
     if (manual == 1){
@@ -95,6 +96,7 @@ int main(int argc, char *argv[]) {
     }
 //#############################################################################################
     ros::spinOnce();
+    r.sleep();
   }
   return 0;
 }
@@ -103,11 +105,10 @@ int main(int argc, char *argv[]) {
 void drive(float lin, float ang){
   geometry_msgs::Twist vel_msg;
   //Our linear speed control looks
-  vel_msg.linear.x = lin*vel_mult;
+  vel_msg.linear.x = (lin*vel_mult)/5;
   vel_msg.angular.z = ang*vel_mult;
   //Publishes the geometry to the turtle_pub
   turtle_pub.publish(vel_msg);
-  std::cout << "lin: " << lin << " ang: " << ang << std::endl; //REMOVE THIS LATER
 }
 
 void joy_callback(const sensor_msgs::Joy::ConstPtr msg){
