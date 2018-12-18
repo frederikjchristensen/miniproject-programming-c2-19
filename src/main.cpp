@@ -87,8 +87,6 @@ int main(int argc, char *argv[]) {
     }
 //######################### END OF NEWMESSAGE BLOCK ###################################
 
-// PATATO LIVES HERE # Press alt + F4 for free burritos.
-
 //########################### Manual control on, code #######################################
     if (manual == 1){
       //Calls the drive function with the linear to be up an down on left thumbstick. And left and right for the second input.
