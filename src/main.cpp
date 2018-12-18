@@ -27,7 +27,11 @@ int main(int argc, char *argv[]) {
   //We just print init done.
   std::cout << "init done" << std::endl;
 
-
+  std::cout << "You can now control your turtlebot!" << endl
+            << "Press select to toggle joystick control" << endl
+            << "Or use one of the four geometric buttons to make the turtle draw a shape!" << endl;
+  
+  
   //Manual is gonna be a condition we use to switch manual control on and off.
   int manual = 0;
 
@@ -47,27 +51,30 @@ int main(int argc, char *argv[]) {
         manual = 0;
       }
   //#################################################################################
+      if(!manual)
+      {
+        // The first index of keys is the "X" button.
+        if(keys[0] == 1){
+          std::cout << "You pressed X" << std::endl;
+            cross();
+        }
+        // The second index of keys is the circle button.
+        if(keys[1] == 1){
+          std::cout << "You pressed O" << std::endl;
+             circle();
+        }
+        // The third index of keys is the triangle button.
+        if(keys[2] == 1){
+          std::cout << "You pressed Triangle" << std::endl;
+            triangle();
+        }
+        // The fourth index of keys is the sqaure button.
+        if(keys[3] == 1){
+          std::cout << "You pressed Square" << std::endl;
+            square();
+        }
+      }
 
-      // The first index of keys is the "X" button.
-      if(keys[0] == 1){
-        std::cout << "You pressed X" << std::endl;
-        cross();
-      }
-      // The second index of keys is the circle button.
-      if(keys[1] == 1){
-        std::cout << "You pressed O" << std::endl;
-        circle();
-      }
-      // The third index of keys is the triangle button.
-      if(keys[2] == 1){
-        std::cout << "You pressed Triangle" << std::endl;
-        triangle();
-      }
-      // The fourth index of keys is the sqaure button.
-      if(keys[3] == 1){
-        std::cout << "You pressed Square" << std::endl;
-        square();
-      }
 
 //############################  SPEED MULTIPLIER ##########################################
 
