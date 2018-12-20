@@ -128,7 +128,10 @@ void joy_callback(const sensor_msgs::Joy::ConstPtr msg){
   newMessage = true;
 }
 
+//Velocity multipler is set to one in all shape functions as if it is changing the forms wont be correctly drawn.
+
 void circle(){
+  vel_mult = 1;
   //Makes the robot run 5 times with speed of 0.2 and turn rate of 1. This makes it run in a circle 1 time.
   for (size_t i = 0; i < 15; i++) {
     drive(0.2, 1);
@@ -137,6 +140,7 @@ void circle(){
 }
 
 void triangle(){
+  vel_mult = 1;
   for (size_t i = 0; i < 3; i++) {
     //Makes the robot drive in 1/3 of a triangle and for loop runs this 3 times.
     drive(0.2,0);
@@ -159,6 +163,7 @@ void triangle(){
 }
 
 void cross(){ //makes the robot drive in a cross.
+  vel_mult = 1;
   drive(0.2,0);
   ros::Duration(0.5).sleep();
   drive(0.2,0);
@@ -176,6 +181,7 @@ void cross(){ //makes the robot drive in a cross.
 }
 
 void square(){
+  vel_mult = 1;
  for (size_t i = 0; i < 4; i++) {
    drive(0.2,0);
    ros::Duration(0.5).sleep();
