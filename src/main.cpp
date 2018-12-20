@@ -27,11 +27,11 @@ int main(int argc, char *argv[]) {
   //We just print init done.
   std::cout << "init done" << std::endl;
 
-  std::cout << "You can now control your turtlebot!" << endl
-            << "Press select to toggle joystick control" << endl
-            << "Or use one of the four geometric buttons to make the turtle draw a shape!" << endl;
-  
-  
+  std::cout << "You can now control your turtlebot!" << std::endl;
+  std::cout << "Press select to toggle joystick control" << std::endl;
+  std::cout << "Or use one of the four geometric buttons to make the turtle draw a shape!" << std::endl;
+
+
   //Manual is gonna be a condition we use to switch manual control on and off.
   int manual = 0;
 
@@ -129,9 +129,10 @@ void joy_callback(const sensor_msgs::Joy::ConstPtr msg){
 }
 
 void circle(){
-  //Makes the robot run 7 times with speed of 0.2 and turn rate of 1. This makes it run in a circle 1 time.
-  for (size_t i = 0; i < 7; i++) {
+  //Makes the robot run 5 times with speed of 0.2 and turn rate of 1. This makes it run in a circle 1 time.
+  for (size_t i = 0; i < 15; i++) {
     drive(0.2, 1);
+    ros::Duration(0.5).sleep();
   }
 }
 
@@ -139,6 +140,16 @@ void triangle(){
   for (size_t i = 0; i < 3; i++) {
     //Makes the robot drive in 1/3 of a triangle and for loop runs this 3 times.
     drive(0.2,0);
+    ros::Duration(0.5).sleep();
+    drive(0.2,0);
+    ros::Duration(0.5).sleep();
+    drive(0.2,0);
+    ros::Duration(0.5).sleep();
+    drive(0,1.05);
+    ros::Duration(0.5).sleep();
+    drive(0,1.05);
+    ros::Duration(0.5).sleep();
+    drive(0,1.05);
     ros::Duration(0.5).sleep();
     drive(0,1.05);
     ros::Duration(0.5).sleep();
