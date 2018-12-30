@@ -2,7 +2,7 @@
 #include<geometry_msgs/Twist.h>
 #include<sensor_msgs/Joy.h>
 
-//Global variables to store the information of the sensor msgs outside the scope of the callback, drive and main function.
+//Global variables to store the information of the sensor msgs outside the scope of the callback function.
 float thumb[6];
 int keys[17];
 float vel_mult = 1;
