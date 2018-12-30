@@ -2,7 +2,7 @@
 #include<geometry_msgs/Twist.h>
 #include<sensor_msgs/Joy.h>
 
-//Global variables to store the information of the sensor msgs outside the scope of the callback function.
+//Global variables to store the information of the sensor msgs outside the scope of the callback, drive and main function.
 float thumb[6];
 int keys[17];
 float vel_mult = 1;
@@ -78,12 +78,12 @@ int main(int argc, char *argv[]) {
 
 //############################  SPEED MULTIPLIER ##########################################
 
-      if (keys[13] == 1 && vel_mult < 2) { //Adds 0.2 to the velocity multiplier. You get the gist.
+      if (keys[13] == 1 && vel_mult < 2) { //Adds 0.2 to the velocity multiplier. 
         vel_mult = vel_mult + 0.2;
         std::cout << "Speed is " << vel_mult << std::endl;
       }
 
-      if (keys[14] == 1 && vel_mult > 0.4) { //Checks that the key is pressed and vel_mult is greater than 0.2
+      if (keys[14] == 1 && vel_mult > 0.4) { //Checks that the key is pressed and vel_mult is greater than 0.4
         vel_mult = vel_mult - 0.2; //Subtracts 0.2 to the velocity multiplier.
         std::cout << "Speed is " << vel_mult << std::endl;
       }
@@ -128,7 +128,7 @@ void joy_callback(const sensor_msgs::Joy::ConstPtr msg){
   newMessage = true;
 }
 
-//Velocity multipler is set to one in all shape functions as if it is changing the forms wont be correctly drawn.
+//Velocity multipler is set to one in all shape functions as if it is changing the forms won't be correctly drawn.
 
 void circle(){
   vel_mult = 1;
@@ -162,7 +162,7 @@ void triangle(){
   }
 }
 
-void cross(){ //makes the robot drive in a cross.
+void cross(){
   vel_mult = 1;
   drive(0.2,0);
   ros::Duration(0.5).sleep();
