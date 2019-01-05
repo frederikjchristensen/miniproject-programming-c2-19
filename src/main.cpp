@@ -51,7 +51,7 @@ int main(int argc, char *argv[]) {
         manual = 0;
       }
   //#################################################################################
-      if(!manual)
+      if(manual == 0)
       {
         // The first index of keys is the "X" button.
         if(keys[0] == 1){
